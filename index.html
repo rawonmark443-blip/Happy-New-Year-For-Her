@@ -2,42 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>At Midnight</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <title>For Bianca</title>
   <style>
     body {
-      margin: 0;
-      font-family: "Georgia", serif;
-      background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
-      color: #ffffff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
+      background-color: #121212;
+      color: #f0f0f0;
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+      padding: 20px;
       text-align: center;
     }
 
     .container {
-      max-width: 700px;
-      padding: 40px 25px;
-      animation: fadeIn 2s ease;
-    }
-
-    h1 {
-      font-size: 2.2em;
-      margin-bottom: 20px;
-      font-weight: normal;
-    }
-
-    p {
-      font-size: 1.1em;
-      line-height: 1.8;
-      margin-bottom: 25px;
+      max-width: 800px;
+      margin: auto;
     }
 
     .section {
       display: none;
+      margin-top: 40px;
     }
 
     .section.active {
@@ -45,42 +29,49 @@
     }
 
     button {
-      background: transparent;
-      border: 1px solid #ffffff;
-      color: #ffffff;
-      padding: 12px 24px;
-      font-size: 1em;
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      background-color: #ff4d6d;
+      color: white;
       cursor: pointer;
-      border-radius: 30px;
-      transition: all 0.3s ease;
     }
 
     button:hover {
-      background: #ffffff;
-      color: #000000;
+      background-color: #ff1a3c;
     }
 
     a {
-      color: #aadfff;
+      color: #ff4d6d;
       text-decoration: none;
-      font-weight: bold;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    p {
+      text-align: left;
+      white-space: pre-line;
     }
   </style>
 </head>
-
 <body>
 
 <div class="container">
 
-  <!-- SECTION 1 -->
+  <!-- COUNTDOWN LOCK -->
+  <div class="section active" id="lockScreen">
+    <h1>Almost...</h1>
+    <p id="countdown">Waiting for midnight...</p>
+    <p style="opacity:0.8;">Please wait a little longer.</p>
+  </div>
+
   <!-- MAIN MESSAGE -->
-<div class="section" id="section2">
-  <p style="white-space: pre-line; text-align: left;">
+  <div class="section" id="section1">
+    <p>
 
 Bianca,
 
@@ -142,62 +133,44 @@ May this year be gentle with you.
 And may you always know, without doubt, that you are deeply, intentionally, and endlessly loved—by me.
 
 Always.
-  </p>
+    </p>
+    <button onclick="nextSection(2)">Listen</button>
+  </div>
 
-  <button onclick="nextSection(4)">Listen</button>
-</div>
-
-  <!-- SECTION 2 -->
+  <!-- VOICE RECORDING -->
   <div class="section" id="section2">
     <p>
-      I don’t always know how to say things out loud.<br><br>
-      So I wrote this instead.<br><br>
-      Every word here is something I’ve carried quietly,
-      something I wanted you to know without rushing time.
-    </p>
-    <button onclick="nextSection(3)">There’s more</button>
-  </div>
-
-  <!-- SECTION 3 – POEM -->
-  <div class="section" id="section3">
-    <p>
-      At midnight,<br>
-      the world changes its number,<br>
-      but my heart doesn’t change direction.<br><br>
-
-      I don’t wish for louder years,<br>
-      only truer ones—<br>
-      and if God allows it,<br>
-      ones where I still get to walk beside you.<br><br>
-
-      You are not a moment I pass through,<br>
-      you are a place I arrive at.<br><br>
-
-      And as time moves forward,<br>
-      let me keep choosing you<br>
-      the same quiet way<br>
-      I am choosing you now.
-    </p>
-    <button onclick="nextSection(4)">Listen</button>
-  </div>
-
-  <!-- SECTION 4 – VOICE -->
-  <div class="section" id="section4">
-    <p>
-      I didn’t know how to write this part…<br>
-      so I said it instead.
-    </p>
-    <p>
       🎧 <a href="PASTE_YOUR_AUDIO_LINK_HERE" target="_blank">Listen to me</a>
-    </p>
-    <p>
-      Happy New Year.
     </p>
   </div>
 
 </div>
 
 <script>
+  // Set countdown to 12:00 AM Jan 1, 2026 UAE time
+  const unlockTime = new Date('2026-01-01T00:00:00+04:00');
+
+  function updateCountdown() {
+    const now = new Date();
+    const diff = unlockTime - now;
+
+    if (diff <= 0) {
+      document.getElementById("lockScreen").classList.remove("active");
+      document.getElementById("section1").classList.add("active");
+      return;
+    }
+
+    const hours = Math.floor(diff / (1000 * 60 * 60));
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+
+    document.getElementById("countdown").innerHTML =
+      `Unlocks in ${hours}h ${minutes}m ${seconds}s`;
+  }
+
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
+
   function nextSection(num) {
     document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
     document.getElementById("section" + num).classList.add("active");
@@ -206,4 +179,3 @@ Always.
 
 </body>
 </html>
-
