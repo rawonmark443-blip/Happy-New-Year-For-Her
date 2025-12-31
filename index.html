@@ -1,98 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>For Bianca 💖</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Sacramento&family=Roboto:wght@400;500&display=swap');
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Bianca 💖</title>
 
-    body {
-      background: linear-gradient(135deg, #ffe5ec, #fff0f5);
-      color: #333;
-      font-family: 'Roboto', sans-serif;
-      line-height: 1.6;
-      padding: 20px;
-      margin: 0;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 
-    .container {
-      max-width: 800px;
-      margin: auto;
-      background-color: rgba(255, 255, 255, 0.85);
-      padding: 30px 40px;
-      border-radius: 20px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    }
+<style>
+body {
+  background: linear-gradient(135deg, #ffe5ec, #fff0f5);
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 20px;
+  color: #444;
+}
 
-    .section {
-      display: none;
-      margin-top: 20px;
-      text-align: left;
-      animation: fadeIn 1s ease forwards;
-    }
+.container {
+  max-width: 850px;
+  margin: auto;
+  background: rgba(255,255,255,0.9);
+  border-radius: 20px;
+  padding: 30px 40px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
 
-    .section.active {
-      display: block;
-    }
+.section {
+  display: none;
+  animation: fade 0.8s ease forwards;
+}
 
-    h1 {
-      font-family: 'Sacramento', cursive;
-      font-size: 3rem;
-      color: #ff4d6d;
-      text-align: center;
-      margin-bottom: 20px;
-    }
+.section.active {
+  display: block;
+}
 
-    p {
-      white-space: pre-line;
-      font-size: 1.1rem;
-      color: #444;
-    }
+h1 {
+  font-family: 'Sacramento', cursive;
+  text-align: center;
+  font-size: 3rem;
+  color: #ff4d6d;
+}
 
-    button {
-      display: inline-block;
-      margin-top: 25px;
-      padding: 12px 25px;
-      font-size: 1.1rem;
-      border: none;
-      border-radius: 12px;
-      background-color: #ff80ab;
-      color: white;
-      cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-      transition: all 0.2s ease;
-    }
+p {
+  white-space: pre-line;
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
 
-    button:hover {
-      background-color: #ff4d6d;
-      transform: translateY(-2px);
-    }
+.center {
+  text-align: center;
+}
 
-    a {
-      color: #ff4d6d;
-      text-decoration: none;
-      font-weight: 500;
-    }
+button {
+  padding: 12px 25px;
+  margin: 10px;
+  border: none;
+  border-radius: 14px;
+  background: #ff80ab;
+  color: white;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: 0.2s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
 
-    a:hover {
-      text-decoration: underline;
-    }
+button:hover {
+  background: #ff4d6d;
+  transform: translateY(-2px);
+}
 
-    @keyframes fadeIn {
-      0% {opacity: 0;}
-      100% {opacity: 1;}
-    }
-  </style>
+.back {
+  background: #b388eb;
+}
+
+a {
+  color: #ff4d6d;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+@keyframes fade {
+  from {opacity:0;}
+  to {opacity:1;}
+}
+</style>
 </head>
+
 <body>
 
 <div class="container">
 
-  <!-- MAIN MESSAGE -->
-  <div class="section active" id="section1">
-    <h1>Happy New Year 💖</h1>
-    <p>
+<!-- MENU -->
+<div class="section active" id="menu">
+  <h1>💌</h1>
+  <p class="center">
+    Do you want to open my letters to you, my beautiful princess?
+  </p>
+  <div class="center">
+    <button onclick="go('yay')">Yes 💖</button>
+    <button onclick="go('plead1')">No 😭</button>
+  </div>
+</div>
+
+<!-- PLEADING -->
+<div class="section" id="plead1">
+  <h1>🥺</h1>
+  <p class="center">Please…?</p>
+  <div class="center">
+    <button onclick="go('plead2')">No</button>
+    <button onclick="go('yay')">Okay fine 💗</button>
+  </div>
+</div>
+
+<div class="section" id="plead2">
+  <h1>😭</h1>
+  <p class="center">Pretty please…?</p>
+  <div class="center">
+    <button onclick="go('plead3')">Still no</button>
+    <button onclick="go('yay')">Yes 😭💖</button>
+  </div>
+</div>
+
+<div class="section" id="plead3">
+  <h1>💔</h1>
+  <p class="center">I even made this with love…</p>
+  <div class="center">
+    <button onclick="go('yay')">Okay okay YES 🥹</button>
+  </div>
+</div>
+
+<!-- YAY -->
+<div class="section" id="yay">
+  <h1>YAYYYY 💕</h1>
+  <p class="center">You said yes… that makes me so happy.</p>
+  <div class="center">
+    <button onclick="go('letter')">Open My Letter 💌</button>
+    <button onclick="go('poem')">I Wrote You a Poem ✍️</button>
+    <button onclick="go('resolution')">My 2026 Resolution 🌱</button>
+    <button onclick="go('voice')">My Song for You 🎶</button>
+  </div>
+</div>
+
+<!-- LETTER -->
+<div class="section" id="letter">
+<h1>Happy New Year 💖</h1>
+<p>
 Bianca,
 
 If you’re reading this, then the year has already changed.
@@ -110,71 +166,74 @@ I choose you on the easy days, and even more on the difficult ones.
 You are not a chapter in my life.
 You are the story.
 
-This year—and every year after—I don’t wish for perfect days. I wish for days with you. Days where your laugh exists somewhere in the background of my life. Days where your name still feels like home on my tongue. Days where loving you continues to feel like the most natural thing I’ve ever done.
-
-Bianca, loving you has changed the way I see everything.
-It taught me patience.
-It taught me tenderness.
-It taught me that love isn’t loud all the time—it’s steady, it’s intentional, it stays.
-
-You are the softness I didn’t know I needed and the strength I admire more than I can explain. You are kind in ways that don’t ask for recognition. Beautiful in ways that go far beyond what the eyes can see. Your presence alone makes the world feel safer, warmer, more alive.
-
-I don’t love you just for who you are on your best days.
-I love you for who you are on the quiet ones, the tired ones, the days you doubt yourself even though you shouldn’t.
-I love every version of you—the joyful one, the thoughtful one, the vulnerable one, the one still becoming.
-
-As this new year begins, here is my vow to you:
-
-I vow to choose you even when it’s hard.
-To listen, not just hear.
-To protect your heart, not just hold your hand.
-To grow with you, not ahead of you, not away from you.
-
-I vow to be someone you can rest in.
-Someone who prays for you when you’re strong and especially when you’re not.
-Someone who never stops learning how to love you better.
-
-If God allows it—if it is His will—then I pray that this year brings us closer, deeper, stronger. Not just in love, but in faith, in understanding, in purpose. I don’t ask for a perfect future. I ask for a shared one.
-
-At midnight, when this year officially begins, I want you to know this:
-
-You are my greatest blessing.
-You are my answered prayer in human form.
-You are the person I see in my tomorrows, not out of habit, but out of hope.
-
-No matter what this year brings—joy, challenges, growth, change—I promise this: my love for you will not be seasonal. It will not depend on circumstances. It will not expire with time.
+This year—and every year after—I don’t wish for perfect days. I wish for days with you.
 
 I am here.
 I am staying.
 I am choosing you—this year, and every year that follows.
 
 Happy New Year, my Bianca.
-May this year be gentle with you.
-And may you always know, without doubt, that you are deeply, intentionally, and endlessly loved—by me.
 
 Always.
-    </p>
-    <button onclick="nextSection(2)">🎤 Listen to Me</button>
-  </div>
+</p>
+<div class="center">
+  <button class="back" onclick="go('yay')">⬅ Go Back</button>
+</div>
+</div>
 
-  <!-- VOICE RECORDING -->
-  <div class="section" id="section2">
-    <h1>🎶 Your Song 🎶</h1>
-    <p>
-      Click below to listen to me singing “Tahanan” for you:
-    </p>
-    <p>
-      🎧 <a href="https://drive.google.com/file/d/1CitAXZQJqbNiVzRNmLskuBJWVVOGxj9z/view?usp=drivesdk" target="_blank">Listen to the Voice Cover</a>
-    </p>
-  </div>
+<!-- POEM -->
+<div class="section" id="poem">
+<h1>For Bianca, My Every Tomorrow</h1>
+<p>
+In the quiet before midnight, I speak your name—
+Bianca—soft as a prayer, bright as a flame.
+You are the echo my heart has been chasing,
+The calm in my chaos, the warmth I am embracing.
+
+I vow to be your shelter, your laughter, your home…
+Bianca, my world begins and ends with you.
+</p>
+<div class="center">
+  <button class="back" onclick="go('yay')">⬅ Go Back</button>
+</div>
+</div>
+
+<!-- RESOLUTION -->
+<div class="section" id="resolution">
+<h1>Mark’s 2026 Resolution</h1>
+<p>
+Bianca… this is my promise.
+This is my resolution.
+And I can’t wait to live it with you.
+</p>
+<div class="center">
+  <button class="back" onclick="go('yay')">⬅ Go Back</button>
+</div>
+</div>
+
+<!-- VOICE -->
+<div class="section" id="voice">
+<h1>🎶 My Song for You</h1>
+<p class="center">
+I sang “Tahanan” for you.
+</p>
+<p class="center">
+🎧 <a href="https://drive.google.com/file/d/1CitAXZQJqbNiVzRNmLskuBJWVVOGxj9z/view?usp=drivesdk" target="_blank">
+Listen here
+</a>
+</p>
+<div class="center">
+  <button class="back" onclick="go('yay')">⬅ Go Back</button>
+</div>
+</div>
 
 </div>
 
 <script>
-  function nextSection(num) {
-    document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
-    document.getElementById("section" + num).classList.add("active");
-  }
+function go(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
 </script>
 
 </body>
