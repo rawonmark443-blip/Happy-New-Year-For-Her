@@ -3,58 +3,85 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>For Bianca</title>
+  <title>For Bianca 💖</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Sacramento&family=Roboto:wght@400;500&display=swap');
+
     body {
-      background-color: #121212;
-      color: #f0f0f0;
-      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #ffe5ec, #fff0f5);
+      color: #333;
+      font-family: 'Roboto', sans-serif;
       line-height: 1.6;
       padding: 20px;
-      text-align: center;
+      margin: 0;
     }
 
     .container {
       max-width: 800px;
       margin: auto;
+      background-color: rgba(255, 255, 255, 0.85);
+      padding: 30px 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     }
 
     .section {
       display: none;
-      margin-top: 40px;
+      margin-top: 20px;
+      text-align: left;
+      animation: fadeIn 1s ease forwards;
     }
 
     .section.active {
       display: block;
     }
 
+    h1 {
+      font-family: 'Sacramento', cursive;
+      font-size: 3rem;
+      color: #ff4d6d;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    p {
+      white-space: pre-line;
+      font-size: 1.1rem;
+      color: #444;
+    }
+
     button {
-      margin-top: 20px;
-      padding: 10px 20px;
-      font-size: 1rem;
+      display: inline-block;
+      margin-top: 25px;
+      padding: 12px 25px;
+      font-size: 1.1rem;
       border: none;
-      border-radius: 8px;
-      background-color: #ff4d6d;
+      border-radius: 12px;
+      background-color: #ff80ab;
       color: white;
       cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      transition: all 0.2s ease;
     }
 
     button:hover {
-      background-color: #ff1a3c;
+      background-color: #ff4d6d;
+      transform: translateY(-2px);
     }
 
     a {
       color: #ff4d6d;
       text-decoration: none;
+      font-weight: 500;
     }
 
     a:hover {
       text-decoration: underline;
     }
 
-    p {
-      text-align: left;
-      white-space: pre-line;
+    @keyframes fadeIn {
+      0% {opacity: 0;}
+      100% {opacity: 1;}
     }
   </style>
 </head>
@@ -62,17 +89,10 @@
 
 <div class="container">
 
-  <!-- WAITING SCREEN -->
-<div class="section active" id="lockScreen">
-  <h1>🎉 Almost There! 🎉</h1>
-  <p>Get ready for something special…</p>
-  <p style="opacity:0.8;">New Year’s surprise is coming soon!</p>
-</div>
-
   <!-- MAIN MESSAGE -->
-  <div class="section" id="section1">
+  <div class="section active" id="section1">
+    <h1>Happy New Year 💖</h1>
     <p>
-
 Bianca,
 
 If you’re reading this, then the year has already changed.
@@ -134,43 +154,23 @@ And may you always know, without doubt, that you are deeply, intentionally, and 
 
 Always.
     </p>
-    <button onclick="nextSection(2)">Listen</button>
+    <button onclick="nextSection(2)">🎤 Listen to Me</button>
   </div>
 
   <!-- VOICE RECORDING -->
   <div class="section" id="section2">
+    <h1>🎶 Your Song 🎶</h1>
     <p>
-      🎧 <a href="PASTE_YOUR_AUDIO_LINK_HERE" target="_blank">Listen to me</a>
+      Click below to listen to me singing “Tahanan” for you:
+    </p>
+    <p>
+      🎧 <a href="https://drive.google.com/file/d/1CitAXZQJqbNiVzRNmLskuBJWVVOGxj9z/view?usp=drivesdk" target="_blank">Listen to the Voice Cover</a>
     </p>
   </div>
 
 </div>
 
 <script>
-  // Set countdown to 12:00 AM Jan 1, 2026 UAE time
-  const unlockTime = new Date('2026-01-01T00:00:00+04:00');
-
-  function updateCountdown() {
-    const now = new Date();
-    const diff = unlockTime - now;
-
-    if (diff <= 0) {
-      document.getElementById("lockScreen").classList.remove("active");
-      document.getElementById("section1").classList.add("active");
-      return;
-    }
-
-    const hours = Math.floor(diff / (1000 * 60 * 60));
-    const minutes = Math.floor((diff / (1000 * 60)) % 60);
-    const seconds = Math.floor((diff / 1000) % 60);
-
-    document.getElementById("countdown").innerHTML =
-      `Unlocks in ${hours}h ${minutes}m ${seconds}s`;
-  }
-
-  setInterval(updateCountdown, 1000);
-  updateCountdown();
-
   function nextSection(num) {
     document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
     document.getElementById("section" + num).classList.add("active");
@@ -179,4 +179,3 @@ Always.
 
 </body>
 </html>
-
