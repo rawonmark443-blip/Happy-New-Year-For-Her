@@ -14,17 +14,23 @@
       --bg1:#0a0a16;
       --bg2:#05050b;
 
-      --card: rgba(12, 12, 24, 0.72);
-      --cardBorder: rgba(255, 120, 150, 0.20);
+      --card: rgba(12, 12, 24, 0.74);
+      --cardBorder: rgba(255, 80, 100, 0.25);
 
-      --accent:#ff4d6d;
+      --accent:#ff2f55;
       --accent2:#ff80ab;
 
       --text:#fff;
       --muted: rgba(255,255,255,0.75);
 
-      --tulipOpacity: 0.22; /* <- make tulips more/less visible */
-      --tulipBlur: 1.2px;   /* <- blur for dreamy look */
+      /* 🌷 Classic Red Tulip palette */
+      --tulipRedDark:#7a0c1a;
+      --tulipRed:#c1122f;
+      --tulipRedLight:#ff4d6d;
+
+      /* Tulip visibility (adjust any time) */
+      --tulipOpacity: 0.35; /* 0.15 = subtle, 0.45 = clearer */
+      --tulipBlur: 0.6px;   /* 0 = sharp, 1.2 = dreamy */
     }
 
     *{box-sizing:border-box}
@@ -33,29 +39,31 @@
       margin:0;
       overflow:hidden;
       font-family: "Roboto", system-ui, -apple-system, Segoe UI, Arial, sans-serif;
-      background: radial-gradient(1200px 700px at 50% 120%, rgba(255,77,109,0.12), transparent 60%),
-                  radial-gradient(900px 600px at 30% 10%, rgba(180,110,255,0.10), transparent 60%),
-                  linear-gradient(180deg, var(--bg1), var(--bg2));
+      background:
+        radial-gradient(1200px 700px at 50% 120%, rgba(255,77,109,0.14), transparent 60%),
+        radial-gradient(900px 600px at 30% 10%, rgba(180,110,255,0.10), transparent 60%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
       color: var(--text);
     }
 
-    /* Night sparkles */
+    /* Night background stars */
     .night {
       position: fixed;
       inset: 0;
       overflow: hidden;
       pointer-events:none;
+      z-index: 0;
     }
     .star{
       position:absolute;
       width:2px;height:2px;
       border-radius:50%;
-      background: rgba(255,255,255,0.8);
+      background: rgba(255,255,255,0.85);
       filter: drop-shadow(0 0 6px rgba(255,255,255,0.45));
       animation: twinkle 3.2s infinite ease-in-out;
     }
     @keyframes twinkle{
-      0%,100%{opacity:.25; transform: scale(1)}
+      0%,100%{opacity:.22; transform: scale(1)}
       50%{opacity:1; transform: scale(1.4)}
     }
     .glow{
@@ -65,9 +73,9 @@
       left: 50%;
       bottom: -520px;
       transform: translateX(-50%);
-      background: radial-gradient(circle, rgba(255,77,109,0.18), transparent 60%);
-      filter: blur(10px);
-      opacity: .9;
+      background: radial-gradient(circle, rgba(255,77,109,0.22), transparent 60%);
+      filter: blur(14px);
+      opacity: .95;
     }
 
     /* Tulips layer (subtle background) */
@@ -77,27 +85,28 @@
       display:flex;
       align-items:flex-end;
       justify-content:center;
-      gap: clamp(28px, 6vw, 90px);
+      gap: clamp(26px, 6vw, 90px);
       padding-bottom: 6vh;
       pointer-events:none;
-      z-index: 0;
+      z-index: 1;
+
       opacity: var(--tulipOpacity);
       filter: blur(var(--tulipBlur));
     }
 
     .tulip{
       position: relative;
-      width: 90px;
-      height: 320px;
+      width: 92px;
+      height: 330px;
       transform-origin: bottom center;
       animation: sway 6s ease-in-out infinite;
     }
-    .tulip.t2{ animation-duration: 6.8s; animation-delay: -1.4s; transform: scale(0.92); }
-    .tulip.t3{ animation-duration: 7.4s; animation-delay: -2.1s; transform: scale(1.02); }
+    .tulip.t2{ animation-duration: 6.8s; animation-delay: -1.4s; transform: scale(0.94); }
+    .tulip.t3{ animation-duration: 7.4s; animation-delay: -2.1s; transform: scale(1.03); }
 
     @keyframes sway{
-      0%,100%{ transform: rotate(-1.5deg) translateY(0); }
-      50%{ transform: rotate(1.8deg) translateY(-2px); }
+      0%,100%{ transform: rotate(-1.6deg) translateY(0); }
+      50%{ transform: rotate(1.9deg) translateY(-2px); }
     }
 
     .stem{
@@ -105,33 +114,33 @@
       bottom:0;
       left:50%;
       width: 8px;
-      height: 190px;
+      height: 200px;
       transform: translateX(-50%);
-      background: linear-gradient(to top, #1b5e20, #4caf50);
+      background: linear-gradient(to top, #0f5a28, #38c172);
       border-radius: 999px;
-      filter: drop-shadow(0 0 8px rgba(76,175,80,0.20));
+      filter: drop-shadow(0 0 8px rgba(56,193,114,0.18));
     }
 
     .leaf{
       position:absolute;
-      bottom: 70px;
-      width: 80px;
+      bottom: 76px;
+      width: 82px;
       height: 28px;
-      background: linear-gradient(to right, #1f7a2e, #6bdc7c);
+      background: linear-gradient(to right, #145c2b, #6bdc7c);
       border-radius: 999px;
       opacity: .95;
       transform-origin: left center;
-      filter: drop-shadow(0 0 10px rgba(76,175,80,0.18));
+      filter: drop-shadow(0 0 10px rgba(56,193,114,0.14));
     }
     .leaf.l1{
       left: -18px;
       transform: rotate(-22deg);
     }
     .leaf.l2{
-      left: 28px;
+      left: 30px;
       transform: rotate(24deg);
-      bottom: 92px;
-      width: 70px;
+      bottom: 100px;
+      width: 72px;
       height: 24px;
       opacity: .9;
     }
@@ -140,34 +149,44 @@
     .head{
       position:absolute;
       left:50%;
-      bottom: 170px;
+      bottom: 178px;
       transform: translateX(-50%);
-      width: 92px;
-      height: 110px;
+      width: 96px;
+      height: 118px;
+      filter: drop-shadow(0 0 14px rgba(255, 47, 85, 0.18));
     }
+
+    /* Petals */
     .petal{
       position:absolute;
       bottom:0;
       width: 30px;
-      height: 94px;
-      background: linear-gradient(to top, #b11226, #ff4d6d);
-      border-radius: 60% 60% 42% 42%;
+      height: 98px;
+      background: linear-gradient(
+        to top,
+        var(--tulipRedDark),
+        var(--tulipRed),
+        var(--tulipRedLight)
+      );
+      border-radius: 70% 70% 45% 45%;
       transform-origin: bottom center;
-      filter: drop-shadow(0 0 14px rgba(255,77,109,0.22));
+      filter: drop-shadow(0 0 12px rgba(255,77,109,0.16));
     }
-    .petal.p1{ left: 2px;  transform: rotate(-22deg); }
-    .petal.p2{ left: 18px; transform: rotate(-10deg); height: 98px;}
-    .petal.p3{ left: 32px; transform: rotate(0deg);  height: 104px; width: 32px;}
-    .petal.p4{ left: 48px; transform: rotate(10deg); height: 98px;}
-    .petal.p5{ left: 62px; transform: rotate(22deg); }
 
-    /* Soft shimmer particles */
+    /* Slightly closed “cup” look */
+    .petal.p1{ left: 4px;  transform: rotate(-22deg) translateY(-1px); }
+    .petal.p2{ left: 20px; transform: rotate(-10deg) translateY(-5px); height: 102px;}
+    .petal.p3{ left: 34px; transform: rotate(0deg)  translateY(-8px); height: 110px; width: 32px;}
+    .petal.p4{ left: 50px; transform: rotate(10deg) translateY(-5px); height: 102px;}
+    .petal.p5{ left: 66px; transform: rotate(22deg) translateY(-1px); }
+
+    /* Soft shimmer particles near tulips */
     .spark{
       position:absolute;
       width: 6px;height:6px;
       border-radius:50%;
-      background: rgba(255,120,160,0.65);
-      filter: blur(0.2px) drop-shadow(0 0 10px rgba(255,120,160,0.45));
+      background: rgba(255, 70, 120, 0.65);
+      filter: blur(0.2px) drop-shadow(0 0 10px rgba(255,70,120,0.45));
       animation: floatUp 4.5s infinite ease-in-out;
       opacity: .9;
     }
@@ -184,13 +203,14 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      z-index: 2;
-      padding: 20px;
+      z-index: 3;
+      padding: 18px;
+      pointer-events:auto;
     }
 
     .card{
       width: min(760px, 100%);
-      max-height: min(82vh, 760px);
+      max-height: min(82vh, 780px);
       overflow:hidden;
       border-radius: 20px;
       background: var(--card);
@@ -204,15 +224,22 @@
       content:"";
       position:absolute;
       inset:-2px;
-      background: radial-gradient(800px 260px at 50% 0%, rgba(255,77,109,0.18), transparent 60%);
+      background: radial-gradient(800px 260px at 50% 0%, rgba(255,77,109,0.20), transparent 60%);
       pointer-events:none;
+    }
+
+    .tap-area{
+      position:absolute;
+      inset:0;
+      z-index: 4;
+      cursor: pointer;
     }
 
     .header{
       padding: 18px 18px 10px 18px;
       text-align:center;
       position: relative;
-      z-index: 1;
+      z-index: 5;
     }
     .header h1{
       margin:0;
@@ -223,17 +250,17 @@
       text-shadow: 0 6px 18px rgba(255,77,109,0.18);
     }
     .header .sub{
-      margin-top: 4px;
+      margin-top: 6px;
       color: var(--muted);
       font-size: 14px;
     }
 
     .content{
       padding: 12px 18px 18px 18px;
-      height: calc(100% - 128px);
+      height: calc(100% - 132px);
       overflow-y:auto;
       position: relative;
-      z-index: 1;
+      z-index: 5;
     }
 
     .typed{
@@ -251,7 +278,7 @@
       padding: 12px 14px 14px 14px;
       border-top: 1px solid rgba(255,255,255,0.08);
       position: relative;
-      z-index: 1;
+      z-index: 5;
       background: rgba(0,0,0,0.12);
       backdrop-filter: blur(6px);
     }
@@ -289,13 +316,6 @@
       border: 1px solid rgba(255,255,255,0.14);
     }
 
-    .tap-area{
-      position:absolute;
-      inset:0;
-      z-index: 3;
-      cursor: pointer;
-    }
-
     .heartline{
       margin-top: 10px;
       text-align:center;
@@ -306,7 +326,6 @@
     }
     .heartline.show{ display:block; }
 
-    /* Small screens */
     @media (max-width: 420px){
       .header h1{ font-size: 40px; }
       .typed{ font-size: 15px; }
@@ -316,12 +335,11 @@
 </head>
 <body>
 
-  <!-- Night background -->
   <div class="night" id="night">
     <div class="glow"></div>
   </div>
 
-  <!-- Subtle swaying red tulips -->
+  <!-- Tulips -->
   <div class="tulips-layer" aria-hidden="true">
     <div class="tulip t1">
       <div class="head">
@@ -330,9 +348,9 @@
       <div class="stem"></div>
       <div class="leaf l1"></div>
       <div class="leaf l2"></div>
-      <div class="spark" style="left:18px; bottom:140px; animation-delay:-0.5s;"></div>
-      <div class="spark" style="left:62px; bottom:160px; animation-delay:-2.2s;"></div>
-      <div class="spark" style="left:44px; bottom:120px; animation-delay:-3.1s;"></div>
+      <div class="spark" style="left:18px; bottom:150px; animation-delay:-0.5s;"></div>
+      <div class="spark" style="left:62px; bottom:165px; animation-delay:-2.2s;"></div>
+      <div class="spark" style="left:44px; bottom:130px; animation-delay:-3.1s;"></div>
     </div>
 
     <div class="tulip t2">
@@ -342,8 +360,8 @@
       <div class="stem"></div>
       <div class="leaf l1"></div>
       <div class="leaf l2"></div>
-      <div class="spark" style="left:20px; bottom:150px; animation-delay:-1.3s;"></div>
-      <div class="spark" style="left:66px; bottom:135px; animation-delay:-2.8s;"></div>
+      <div class="spark" style="left:20px; bottom:160px; animation-delay:-1.3s;"></div>
+      <div class="spark" style="left:66px; bottom:145px; animation-delay:-2.8s;"></div>
     </div>
 
     <div class="tulip t3">
@@ -353,13 +371,13 @@
       <div class="stem"></div>
       <div class="leaf l1"></div>
       <div class="leaf l2"></div>
-      <div class="spark" style="left:22px; bottom:140px; animation-delay:-0.9s;"></div>
-      <div class="spark" style="left:56px; bottom:170px; animation-delay:-3.7s;"></div>
-      <div class="spark" style="left:40px; bottom:125px; animation-delay:-1.9s;"></div>
+      <div class="spark" style="left:22px; bottom:150px; animation-delay:-0.9s;"></div>
+      <div class="spark" style="left:56px; bottom:180px; animation-delay:-3.7s;"></div>
+      <div class="spark" style="left:40px; bottom:135px; animation-delay:-1.9s;"></div>
     </div>
   </div>
 
-  <!-- Letter overlay -->
+  <!-- Letter -->
   <div class="overlay">
     <div class="card" id="card">
       <div class="tap-area" id="tapArea" title="Tap/click to continue"></div>
@@ -378,7 +396,6 @@
         <div class="hint" id="hint">Next: “From the moment we started talking…”</div>
         <div class="btns">
           <button class="btn secondary" id="restartBtn" type="button">Restart</button>
-          <!-- If your love site is at the repo root, this goes back to it -->
           <button class="btn secondary" type="button" onclick="window.location.href='../index.html'">Go Back</button>
           <button class="btn" id="nextBtn" type="button">Next 💗</button>
         </div>
@@ -387,26 +404,22 @@
   </div>
 
   <script>
-    // Build a pretty star field
+    // Stars
     (function makeStars(){
       const night = document.getElementById('night');
       const starCount = 70;
       for(let i=0;i<starCount;i++){
         const s = document.createElement('div');
         s.className = 'star';
-        const left = Math.random()*100;
-        const top = Math.random()*70; // keep stars above horizon
-        const delay = (Math.random()*3).toFixed(2);
-        const dur = (2.4 + Math.random()*2.6).toFixed(2);
-        s.style.left = left + '%';
-        s.style.top = top + '%';
-        s.style.animationDelay = delay + 's';
-        s.style.animationDuration = dur + 's';
+        s.style.left = (Math.random()*100) + '%';
+        s.style.top = (Math.random()*70) + '%';
+        s.style.animationDelay = (Math.random()*3).toFixed(2) + 's';
+        s.style.animationDuration = (2.4 + Math.random()*2.6).toFixed(2) + 's';
         night.appendChild(s);
       }
     })();
 
-    // Emotional breakpoints (paragraph groups)
+    // Emotional breakpoints
     const parts = [
 `Dear Bianca
 
@@ -453,7 +466,6 @@ So here, on our 100th day of talking, I want you to know: my love for you is end
     }
 
     function scrollToBottom(){
-      // keep the latest typed text in view
       contentEl.scrollTop = contentEl.scrollHeight;
     }
 
@@ -467,18 +479,11 @@ So here, on our 100th day of talking, I want you to know: my love for you is end
         charIndex++;
         scrollToBottom();
 
-        // Slight natural rhythm: slower on punctuation
-        const lastChar = current[charIndex-1];
-        if (lastChar === '.' || lastChar === '!' || lastChar === '?' ) {
-          // tiny pause by skipping one tick (no extra code needed)
-        }
-
         if (charIndex >= current.length) {
           clearInterval(typingTimer);
           isTyping = false;
           charIndex = 0;
 
-          // show hearts at very end
           if (partIndex === parts.length - 1) {
             heartline.classList.add('show');
             hintEl.textContent = 'End. (You can restart anytime) 💖';
@@ -510,19 +515,10 @@ So here, on our 100th day of talking, I want you to know: my love for you is end
     }
 
     function next(){
-      // If typing, a tap finishes the paragraph
-      if (isTyping) {
-        finishPartInstant();
-        return;
-      }
+      if (isTyping) { finishPartInstant(); return; }
 
-      // If end reached, restart
-      if (partIndex === parts.length - 1) {
-        restart();
-        return;
-      }
+      if (partIndex === parts.length - 1) { restart(); return; }
 
-      // Move to next paragraph
       partIndex++;
       typedEl.textContent += "\n\n";
       setHint();
@@ -541,16 +537,12 @@ So here, on our 100th day of talking, I want you to know: my love for you is end
       typeCurrentPart();
     }
 
-    // Start
     setHint();
     typeCurrentPart();
 
-    // Controls
     nextBtn.addEventListener('click', next);
     restartBtn.addEventListener('click', restart);
     tapArea.addEventListener('click', next);
-
-    // Optional: Space/Enter to continue (desktop)
     document.addEventListener('keydown', (e) => {
       if (e.key === ' ' || e.key === 'Enter') next();
     });
