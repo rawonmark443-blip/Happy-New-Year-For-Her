@@ -228,12 +228,7 @@
       pointer-events:none;
     }
 
-    .tap-area{
-      position:absolute;
-      inset:0;
-      z-index: 4;
-      cursor: pointer;
-    }
+    
 
     .header{
       padding: 18px 18px 10px 18px;
@@ -380,8 +375,7 @@
   <!-- Letter -->
   <div class="overlay">
     <div class="card" id="card">
-      <div class="tap-area" id="tapArea" title="Tap/click to continue"></div>
-
+      
       <div class="header">
         <h1>100 Days 💖</h1>
         <div class="sub">Tap anywhere to continue • Tap during typing to finish the paragraph</div>
@@ -444,7 +438,6 @@ So here, on our 100th day of talking, I want you to know: my love for you is end
     const hintEl = document.getElementById('hint');
     const nextBtn = document.getElementById('nextBtn');
     const restartBtn = document.getElementById('restartBtn');
-    const tapArea = document.getElementById('tapArea');
     const heartline = document.getElementById('heartline');
     const contentEl = document.getElementById('content');
 
@@ -542,7 +535,6 @@ So here, on our 100th day of talking, I want you to know: my love for you is end
 
     nextBtn.addEventListener('click', next);
     restartBtn.addEventListener('click', restart);
-    tapArea.addEventListener('click', next);
     document.addEventListener('keydown', (e) => {
       if (e.key === ' ' || e.key === 'Enter') next();
     });
