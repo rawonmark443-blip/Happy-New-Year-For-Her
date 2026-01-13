@@ -28,16 +28,16 @@
       --tulipRed:#c1122f;
       --tulipRedLight:#ff4d6d;
 
-      /* Tulip visibility (adjust any time) */
-      --tulipOpacity: 0.35; /* 0.15 = subtle, 0.45 = clearer */
-      --tulipBlur: 0.6px;   /* 0 = sharp, 1.2 = dreamy */
+      /* Tulip visibility */
+      --tulipOpacity: 0.35;
+      --tulipBlur: 0.6px;
     }
 
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0;
-      overflow:hidden;
+      overflow:hidden; /* keep background nice */
       font-family: "Roboto", system-ui, -apple-system, Segoe UI, Arial, sans-serif;
       background:
         radial-gradient(1200px 700px at 50% 120%, rgba(255,77,109,0.14), transparent 60%),
@@ -46,18 +46,10 @@
       color: var(--text);
     }
 
-    /* Night background stars */
-    .night {
-      position: fixed;
-      inset: 0;
-      overflow: hidden;
-      pointer-events:none;
-      z-index: 0;
-    }
+    /* Stars */
+    .night { position: fixed; inset: 0; pointer-events:none; z-index: 0; }
     .star{
-      position:absolute;
-      width:2px;height:2px;
-      border-radius:50%;
+      position:absolute; width:2px;height:2px; border-radius:50%;
       background: rgba(255,255,255,0.85);
       filter: drop-shadow(0 0 6px rgba(255,255,255,0.45));
       animation: twinkle 3.2s infinite ease-in-out;
@@ -67,37 +59,26 @@
       50%{opacity:1; transform: scale(1.4)}
     }
     .glow{
-      position:absolute;
-      width: 900px;
-      height: 900px;
-      left: 50%;
-      bottom: -520px;
-      transform: translateX(-50%);
+      position:absolute; width: 900px; height: 900px;
+      left: 50%; bottom: -520px; transform: translateX(-50%);
       background: radial-gradient(circle, rgba(255,77,109,0.22), transparent 60%);
-      filter: blur(14px);
-      opacity: .95;
+      filter: blur(14px); opacity: .95;
     }
 
-    /* Tulips layer (subtle background) */
+    /* Tulips */
     .tulips-layer{
-      position: fixed;
-      inset: 0;
-      display:flex;
-      align-items:flex-end;
-      justify-content:center;
+      position: fixed; inset: 0;
+      display:flex; align-items:flex-end; justify-content:center;
       gap: clamp(26px, 6vw, 90px);
       padding-bottom: 6vh;
       pointer-events:none;
       z-index: 1;
-
       opacity: var(--tulipOpacity);
       filter: blur(var(--tulipBlur));
     }
-
     .tulip{
       position: relative;
-      width: 92px;
-      height: 330px;
+      width: 92px; height: 330px;
       transform-origin: bottom center;
       animation: sway 6s ease-in-out infinite;
     }
@@ -110,81 +91,47 @@
     }
 
     .stem{
-      position:absolute;
-      bottom:0;
-      left:50%;
-      width: 8px;
-      height: 200px;
-      transform: translateX(-50%);
+      position:absolute; bottom:0; left:50%;
+      width: 8px; height: 200px; transform: translateX(-50%);
       background: linear-gradient(to top, #0f5a28, #38c172);
       border-radius: 999px;
       filter: drop-shadow(0 0 8px rgba(56,193,114,0.18));
     }
 
     .leaf{
-      position:absolute;
-      bottom: 76px;
-      width: 82px;
-      height: 28px;
+      position:absolute; bottom: 76px;
+      width: 82px; height: 28px;
       background: linear-gradient(to right, #145c2b, #6bdc7c);
       border-radius: 999px;
       opacity: .95;
       transform-origin: left center;
       filter: drop-shadow(0 0 10px rgba(56,193,114,0.14));
     }
-    .leaf.l1{
-      left: -18px;
-      transform: rotate(-22deg);
-    }
-    .leaf.l2{
-      left: 30px;
-      transform: rotate(24deg);
-      bottom: 100px;
-      width: 72px;
-      height: 24px;
-      opacity: .9;
-    }
+    .leaf.l1{ left: -18px; transform: rotate(-22deg); }
+    .leaf.l2{ left: 30px; transform: rotate(24deg); bottom: 100px; width: 72px; height: 24px; opacity: .9; }
 
-    /* Tulip head */
     .head{
-      position:absolute;
-      left:50%;
-      bottom: 178px;
-      transform: translateX(-50%);
-      width: 96px;
-      height: 118px;
+      position:absolute; left:50%; bottom: 178px; transform: translateX(-50%);
+      width: 96px; height: 118px;
       filter: drop-shadow(0 0 14px rgba(255, 47, 85, 0.18));
     }
 
-    /* Petals */
     .petal{
-      position:absolute;
-      bottom:0;
-      width: 30px;
-      height: 98px;
-      background: linear-gradient(
-        to top,
-        var(--tulipRedDark),
-        var(--tulipRed),
-        var(--tulipRedLight)
-      );
+      position:absolute; bottom:0;
+      width: 30px; height: 98px;
+      background: linear-gradient(to top, var(--tulipRedDark), var(--tulipRed), var(--tulipRedLight));
       border-radius: 70% 70% 45% 45%;
       transform-origin: bottom center;
       filter: drop-shadow(0 0 12px rgba(255,77,109,0.16));
     }
-
-    /* Slightly closed “cup” look */
     .petal.p1{ left: 4px;  transform: rotate(-22deg) translateY(-1px); }
     .petal.p2{ left: 20px; transform: rotate(-10deg) translateY(-5px); height: 102px;}
     .petal.p3{ left: 34px; transform: rotate(0deg)  translateY(-8px); height: 110px; width: 32px;}
     .petal.p4{ left: 50px; transform: rotate(10deg) translateY(-5px); height: 102px;}
     .petal.p5{ left: 66px; transform: rotate(22deg) translateY(-1px); }
 
-    /* Soft shimmer particles near tulips */
     .spark{
-      position:absolute;
-      width: 6px;height:6px;
-      border-radius:50%;
+      position:absolute; width: 6px;height:6px; border-radius:50%;
       background: rgba(255, 70, 120, 0.65);
       filter: blur(0.2px) drop-shadow(0 0 10px rgba(255,70,120,0.45));
       animation: floatUp 4.5s infinite ease-in-out;
@@ -196,52 +143,46 @@
       100%{ transform: translateY(-220px) translateX(18px); opacity: 0; }
     }
 
-    /* Letter overlay */
+    /* Overlay card layout (scroll ALWAYS works) */
     .overlay{
-      position: fixed;
-      inset: 0;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      z-index: 3;
-      padding: 18px;
-      pointer-events:auto;
+      position: fixed; inset: 0;
+      display:flex; align-items:center; justify-content:center;
+      z-index: 3; padding: 18px;
     }
 
     .card{
       width: min(760px, 100%);
-      max-height: min(82vh, 780px);
-      overflow:hidden;
+      height: min(82vh, 780px);
+      display:flex;
+      flex-direction: column;
       border-radius: 20px;
       background: var(--card);
       border: 1px solid var(--cardBorder);
       box-shadow: 0 18px 60px rgba(0,0,0,0.35);
       backdrop-filter: blur(8px);
+      overflow: hidden;
       position: relative;
     }
 
     .card::before{
       content:"";
-      position:absolute;
-      inset:-2px;
+      position:absolute; inset:-2px;
       background: radial-gradient(800px 260px at 50% 0%, rgba(255,77,109,0.20), transparent 60%);
       pointer-events:none;
     }
-
-    
 
     .header{
       padding: 18px 18px 10px 18px;
       text-align:center;
       position: relative;
-      z-index: 5;
+      z-index: 2;
+      flex: 0 0 auto;
     }
     .header h1{
       margin:0;
       font-family: "Sacramento", cursive;
       font-size: 46px;
       color: #ff7aa2;
-      letter-spacing: .2px;
       text-shadow: 0 6px 18px rgba(255,77,109,0.18);
     }
     .header .sub{
@@ -252,13 +193,13 @@
 
     .content{
       padding: 12px 18px 18px 18px;
-      height: calc(100% - 132px);
-      overflow-y:auto;
+      overflow-y:auto; /* ✅ scrolling */
       position: relative;
-      z-index: 5;
+      z-index: 2;
+      flex: 1 1 auto;
     }
 
-    .typed{
+    .message{
       white-space: pre-wrap;
       line-height: 1.85;
       font-size: 16px;
@@ -272,10 +213,11 @@
       gap: 10px;
       padding: 12px 14px 14px 14px;
       border-top: 1px solid rgba(255,255,255,0.08);
-      position: relative;
-      z-index: 5;
       background: rgba(0,0,0,0.12);
       backdrop-filter: blur(6px);
+      position: relative;
+      z-index: 2;
+      flex: 0 0 auto;
     }
 
     .hint{
@@ -283,17 +225,10 @@
       color: rgba(255,255,255,0.70);
     }
 
-    .btns{
-      display:flex;
-      gap:10px;
-      align-items:center;
-      justify-content:flex-end;
-      flex-wrap: wrap;
-    }
+    .btns{ display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end; }
 
     .btn{
-      border: 0;
-      cursor:pointer;
+      border: 0; cursor:pointer;
       padding: 10px 14px;
       border-radius: 14px;
       font-weight: 500;
@@ -311,38 +246,23 @@
       border: 1px solid rgba(255,255,255,0.14);
     }
 
-    .heartline{
-      margin-top: 10px;
-      text-align:center;
-      color: rgba(255,255,255,0.8);
-      font-size: 18px;
-      letter-spacing: 2px;
-      display:none;
-    }
-    .heartline.show{ display:block; }
-
     @media (max-width: 420px){
       .header h1{ font-size: 40px; }
-      .typed{ font-size: 15px; }
+      .message{ font-size: 15px; }
       .btn{ padding: 10px 12px; }
     }
   </style>
 </head>
+
 <body>
+  <div class="night" id="night"><div class="glow"></div></div>
 
-  <div class="night" id="night">
-    <div class="glow"></div>
-  </div>
-
-  <!-- Tulips -->
   <div class="tulips-layer" aria-hidden="true">
     <div class="tulip t1">
       <div class="head">
         <div class="petal p1"></div><div class="petal p2"></div><div class="petal p3"></div><div class="petal p4"></div><div class="petal p5"></div>
       </div>
-      <div class="stem"></div>
-      <div class="leaf l1"></div>
-      <div class="leaf l2"></div>
+      <div class="stem"></div><div class="leaf l1"></div><div class="leaf l2"></div>
       <div class="spark" style="left:18px; bottom:150px; animation-delay:-0.5s;"></div>
       <div class="spark" style="left:62px; bottom:165px; animation-delay:-2.2s;"></div>
       <div class="spark" style="left:44px; bottom:130px; animation-delay:-3.1s;"></div>
@@ -352,9 +272,7 @@
       <div class="head">
         <div class="petal p1"></div><div class="petal p2"></div><div class="petal p3"></div><div class="petal p4"></div><div class="petal p5"></div>
       </div>
-      <div class="stem"></div>
-      <div class="leaf l1"></div>
-      <div class="leaf l2"></div>
+      <div class="stem"></div><div class="leaf l1"></div><div class="leaf l2"></div>
       <div class="spark" style="left:20px; bottom:160px; animation-delay:-1.3s;"></div>
       <div class="spark" style="left:66px; bottom:145px; animation-delay:-2.8s;"></div>
     </div>
@@ -363,35 +281,30 @@
       <div class="head">
         <div class="petal p1"></div><div class="petal p2"></div><div class="petal p3"></div><div class="petal p4"></div><div class="petal p5"></div>
       </div>
-      <div class="stem"></div>
-      <div class="leaf l1"></div>
-      <div class="leaf l2"></div>
+      <div class="stem"></div><div class="leaf l1"></div><div class="leaf l2"></div>
       <div class="spark" style="left:22px; bottom:150px; animation-delay:-0.9s;"></div>
       <div class="spark" style="left:56px; bottom:180px; animation-delay:-3.7s;"></div>
       <div class="spark" style="left:40px; bottom:135px; animation-delay:-1.9s;"></div>
     </div>
   </div>
 
-  <!-- Letter -->
   <div class="overlay">
-    <div class="card" id="card">
-      
+    <div class="card">
       <div class="header">
         <h1>100 Days 💖</h1>
-        <div class="sub">Tap anywhere to continue • Tap during typing to finish the paragraph</div>
+        <div class="sub">Scroll freely • Use the button to continue</div>
       </div>
 
       <div class="content" id="content">
-        <div class="typed" id="typed"></div>
-        <div class="heartline" id="heartline">❤️ ❤️ ❤️</div>
+        <div class="message" id="message"></div>
       </div>
 
       <div class="controls">
-        <div class="hint" id="hint">Next: “From the moment we started talking…”</div>
+        <div class="hint" id="hint">Part 1 of 6</div>
         <div class="btns">
           <button class="btn secondary" id="restartBtn" type="button">Restart</button>
           <button class="btn secondary" type="button" onclick="window.location.href='../index.html'">Go Back</button>
-          <button class="btn" id="nextBtn" type="button">Next 💗</button>
+          <button class="btn" id="nextBtn" type="button">Click to continue 💗</button>
         </div>
       </div>
     </div>
@@ -399,7 +312,7 @@
 
   <script>
     // Stars
-    (function makeStars(){
+    (function(){
       const night = document.getElementById('night');
       const starCount = 70;
       for(let i=0;i<starCount;i++){
@@ -413,7 +326,6 @@
       }
     })();
 
-    // Emotional breakpoints
     const parts = [
 `Dear Bianca
 
@@ -431,114 +343,48 @@ From the moment we started talking, I never imagined that someone could mean so 
 
 Thank you for being you—for being patient, kind, inspiring, and beautiful in every sense of the word. Thank you for letting me love you, and thank you for letting me be a part of your life. I don’t take a single moment of our time together for granted. You are my first love, my greatest blessing, and the one I will forever treasure.
 
-So here, on our 100th day of talking, I want you to know: my love for you is endless. My heart is yours. My life is brighter because of you. You are my forever, and you always will be.❤️❤️❤️`
+So here, on our 100th day of talking, I want you to know: my love for you is endless. My heart is yours. My life is brighter because of you. You are my forever, and you always will be. ❤️❤️❤️`
     ];
 
-    const typedEl = document.getElementById('typed');
+    const messageEl = document.getElementById('message');
     const hintEl = document.getElementById('hint');
     const nextBtn = document.getElementById('nextBtn');
     const restartBtn = document.getElementById('restartBtn');
-    const heartline = document.getElementById('heartline');
     const contentEl = document.getElementById('content');
 
-    let partIndex = 0;
-    let charIndex = 0;
-    let isTyping = false;
-    let typingTimer = null;
+    let index = 0;
 
-    function setHint(){
-      const hints = [
-        'Next: “From the moment we started talking…”',
-        'Next: “You are my first love…”',
-        'Next: “You’ve changed me…”',
-        'Next: “You are safe with me…”',
-        'Next: “As you see the tulips waving…”',
-        'Next: “I promise… Thank you… Forever…”'
-      ];
-      hintEl.textContent = hints[Math.min(partIndex, hints.length-1)];
-    }
+    function render(){
+      messageEl.textContent = parts[index];
+      hintEl.textContent = `Part ${index+1} of ${parts.length}`;
+      contentEl.scrollTop = 0;
 
-    function scrollToBottom(){
-      contentEl.scrollTop = contentEl.scrollHeight;
-    }
-
-    function typeCurrentPart(){
-      clearInterval(typingTimer);
-      isTyping = true;
-
-      const current = parts[partIndex];
-      typingTimer = setInterval(() => {
-        typedEl.textContent += current[charIndex] || '';
-        charIndex++;
-        scrollToBottom();
-
-        if (charIndex >= current.length) {
-          clearInterval(typingTimer);
-          isTyping = false;
-          charIndex = 0;
-
-          if (partIndex === parts.length - 1) {
-            heartline.classList.add('show');
-            hintEl.textContent = 'End. (You can restart anytime) 💖';
-            nextBtn.textContent = 'Restart 💗';
-          } else {
-            hintEl.textContent = 'Tap to continue…';
-            nextBtn.textContent = 'Next 💗';
-          }
-        }
-      }, 18);
-    }
-
-    function finishPartInstant(){
-      clearInterval(typingTimer);
-      const current = parts[partIndex];
-      typedEl.textContent += current.slice(charIndex);
-      isTyping = false;
-      charIndex = 0;
-      scrollToBottom();
-
-      if (partIndex === parts.length - 1) {
-        heartline.classList.add('show');
-        hintEl.textContent = 'End. (You can restart anytime) 💖';
+      if(index === parts.length - 1){
         nextBtn.textContent = 'Restart 💗';
       } else {
-        hintEl.textContent = 'Tap to continue…';
-        nextBtn.textContent = 'Next 💗';
+        nextBtn.textContent = 'Click to continue 💗';
       }
     }
 
     function next(){
-      if (isTyping) { finishPartInstant(); return; }
-
-      if (partIndex === parts.length - 1) { restart(); return; }
-
-      partIndex++;
-      typedEl.textContent += "\n\n";
-      setHint();
-      typeCurrentPart();
+      if(index === parts.length - 1){
+        index = 0;
+        render();
+        return;
+      }
+      index++;
+      render();
     }
 
     function restart(){
-      clearInterval(typingTimer);
-      partIndex = 0;
-      charIndex = 0;
-      isTyping = false;
-      typedEl.textContent = '';
-      heartline.classList.remove('show');
-      nextBtn.textContent = 'Next 💗';
-      setHint();
-      typeCurrentPart();
+      index = 0;
+      render();
     }
-
-    setHint();
-    typeCurrentPart();
 
     nextBtn.addEventListener('click', next);
     restartBtn.addEventListener('click', restart);
-    document.addEventListener('keydown', (e) => {
-      if (e.key === ' ' || e.key === 'Enter') next();
-    });
-  </script>
 
+    render();
+  </script>
 </body>
 </html>
