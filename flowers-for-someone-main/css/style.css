@@ -1214,3 +1214,74 @@ body {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+/* =========================
+   🌷 TULIP MODE (Classic Red)
+   Paste at VERY BOTTOM of style.css
+   ========================= */
+
+/* Make the whole bloom a bit taller + more tulip-like */
+.flower__leafs {
+  transform: translateY(-2px) scaleY(1.18) !important;
+}
+
+/* Remove the daisy center circle */
+.flower__white-circle {
+  display: none !important;
+}
+
+/* Petals: deeper red, taller, more closed (tulip cup look) */
+.flower__leaf {
+  background: linear-gradient(to top, #8b0f1f, #ff2f55) !important;
+  width: 26px !important;
+  height: 74px !important;
+  border-radius: 70% 70% 45% 45% !important;
+  filter: drop-shadow(0 0 10px rgba(255, 47, 85, 0.25)) !important;
+}
+
+/* Close petals inward so it looks like a tulip (not a fan flower) */
+.flower__leaf--1 {
+  transform: rotate(-14deg) translateY(-4px) translateX(2px) !important;
+}
+.flower__leaf--2 {
+  transform: rotate(-6deg) translateY(-6px) translateX(1px) !important;
+}
+.flower__leaf--3 {
+  transform: rotate(6deg) translateY(-6px) translateX(-1px) !important;
+}
+.flower__leaf--4 {
+  transform: rotate(14deg) translateY(-4px) translateX(-2px) !important;
+}
+
+/* Optional: add 2 "inner" petals if your CSS/HTML supports them
+   (If you don't have leaf--5/leaf--6, this won't hurt anything.) */
+.flower__leaf--5 {
+  transform: rotate(0deg) translateY(-8px) scaleX(0.92) !important;
+  opacity: 0.95 !important;
+}
+.flower__leaf--6 {
+  transform: rotate(0deg) translateY(-10px) scaleX(0.86) !important;
+  opacity: 0.85 !important;
+}
+
+/* Make stem and leaves richer green */
+.flower__line {
+  background: linear-gradient(to top, #0f5a28, #38c172) !important;
+}
+.flower__line__leaf,
+.flower__g-front__leaf,
+.flower__g-front__leaf-wrapper,
+.flower__g-fr__leaf,
+.leaf {
+  filter: drop-shadow(0 0 8px rgba(60, 210, 120, 0.16)) !important;
+}
+
+/* Make the little lights slightly warm/red (romantic vibe) */
+.flower__light {
+  background-color: rgba(255, 70, 120, 0.55) !important;
+}
+
+/* Subtle: make flowers feel a bit softer if you want */
+.flowers {
+  filter: saturate(1.15) contrast(1.05);
+}
