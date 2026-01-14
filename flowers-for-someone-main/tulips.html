@@ -108,6 +108,46 @@
 }
 .btnFx:hover{ transform: translateY(-2px); background: rgba(255, 90, 130, .28); }
 .btnFx.secondary{ background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.16); }
+    
+/* ✅ Make stem + leaf parts green (the white ones you see) */
+.flower__line{
+  background: #2e9b57 !important;   /* main stem line */
+}
+
+.flower__line__leaf{
+  background: #34b46a !important;   /* the side leaves */
+}
+
+/* Optional: add a tiny highlight so it looks alive */
+.flower__line__leaf::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(90deg, rgba(255,255,255,.18), rgba(255,255,255,0));
+  pointer-events: none;
+}
+/* ===== FIX: make stem + stem leaves green ===== */
+
+/* main stem */
+.flower__line{
+  background: linear-gradient(180deg, #2e9b57, #1f6f3d) !important;
+}
+
+/* leaves on the stem */
+.flower__line__leaf{
+  background: linear-gradient(180deg, #3fcf7f, #2e9b57) !important;
+}
+
+/* remove white highlight glow */
+.flower__line__leaf::after{
+  background: none !important;
+}
+
+/* REMOVE white circle glow */
+.flower__white-circle{
+  display: none !important;
+}
 
   </style>
 </head>
