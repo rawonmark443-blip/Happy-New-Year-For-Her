@@ -154,6 +154,13 @@
 .flower__leafs--3{
   top: 10px !important;
 }
+    /* FIX: connect tulip head to stem (works even if original uses transforms) */
+.flower__leafs--1,
+.flower__leafs--2,
+.flower__leafs--3{
+  position: relative !important;
+  transform: translateY(12px) !important; /* adjust: try 8px–18px */
+}
   </style>
 </head>
 
