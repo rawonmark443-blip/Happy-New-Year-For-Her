@@ -159,6 +159,23 @@
 .flower__line{
   translate: 0 -10px;         /* try -6px to -18px */
 }
+    /* ✅ Seam-fix: add a small connector so the head is always attached */
+.flower__line{
+  position: relative; /* needed for ::before anchor */
+}
+
+.flower__line::before{
+  content: "";
+  position: absolute;
+  top: -18px;              /* adjust: -10px to -28px */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;             /* adjust: 6px to 14px */
+  height: 24px;            /* adjust: 14px to 30px */
+  background: linear-gradient(180deg, #2e9b57, #1f6f3d);
+  border-radius: 999px;
+  z-index: 2;
+}
   </style>
 </head>
 
