@@ -148,12 +148,16 @@
 .flower__white-circle{
   display: none !important;
 }
-   /* FIX: connect tulip head to stem (works even if original uses transforms) */
+/* ✅ FIX: connect tulip head to stem WITHOUT overriding original transform */
 .flower__leafs--1,
 .flower__leafs--2,
 .flower__leafs--3{
-  position: relative !important;
-  transform: translateY(12px) !important; /* adjust: try 8px–18px */
+  translate: 0 14px;          /* try 10px to 22px */
+}
+
+/* ✅ Pull stem upward a bit (also does NOT override transform) */
+.flower__line{
+  translate: 0 -10px;         /* try -6px to -18px */
 }
   </style>
 </head>
